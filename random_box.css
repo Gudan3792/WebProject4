@@ -1,0 +1,253 @@
+        body, html {
+  min-height: 100vh;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+        body {
+            background: #111216; /* 아주 진한 블랙 계열 */
+            font-family: Arial, sans-serif;
+            color: #333;
+            -webkit-user-select:none;
+            -moz-user-select:none;
+            -ms-user-select:none;
+            user-select:none
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #23232a; /* 다크 그레이, 카드 배경 */
+            box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+            border-radius: 16px;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 32px
+        }
+        .container h1 {
+            color: #c4c4c4;
+        }
+        .container p {
+            font-size: 1.1em;
+            margin: 20px 0;
+        }
+        .container h1 span{
+            color:#ffc300;
+            font-weight: 900;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #666;
+        }
+        .body-overlay {
+  position: fixed;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.8); /* 80% 어두운 오버레이 */
+  z-index: 0;
+}
+.container p{
+    margin-bottom: 50px;
+}
+.footer P{
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+
+
+        /*box*/
+
+  #box {
+  display: block;
+  cursor: pointer;
+  position: relative;
+  width: 280px;   /* 이미지 실제 너비로 맞추세요 */
+  height: 350px;  /* 이미지 실제 높이로 맞추세요 */
+}
+.box-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* 이미지 비율 유지하며 크기 맞춤 */
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: opacity 0.3s;
+}
+
+@keyframes bounce {
+  0%   { transform: translateY(0);}
+  20%  { transform: translateY(-30px);}
+  40%  { transform: translateY(0);}
+  60%  { transform: translateY(-15px);}
+  80%  { transform: translateY(0);}
+  100% { transform: translateY(0);}
+}
+.bouncing {
+  animation: bounce 2.7s;
+}
+.open-img {
+  position: absolute;
+  left: 0; top: 0;
+}
+
+@keyframes shakePause {
+  0%   { transform: translateX(0) rotate(0deg);}
+  6%   { transform: translateX(-8px) rotate(-3deg);}
+  13%  { transform: translateX(8px) rotate(3deg);}
+  20%  { transform: translateX(-6px) rotate(-2deg);}
+  27%  { transform: translateX(6px) rotate(2deg);}
+  34%  { transform: translateX(-4px) rotate(-1deg);}
+  41%  { transform: translateX(4px) rotate(1deg);}
+  48%  { transform: translateX(-2px) rotate(-0.5deg);}
+  55%  { transform: translateX(2px) rotate(0.5deg);}
+  62%  { transform: translateX(-1px) rotate(-0.2deg);}
+  70%  { transform: translateX(0) rotate(0deg);}
+  /* 70%~100%: 쉐이크 끝, 멈춤 상태 */
+  100% { transform: translateX(0) rotate(0deg);}
+}
+.shake {
+  animation: shakePause 4s infinite;
+}
+
+
+
+
+/*card*/
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px; /* 원하는 높이 */
+  perspective: 1200px; /* 3D 효과 핵심 */
+  
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: linear-gradient(135deg, #23232a 60%, #22263a 100%);
+  box-shadow: 0 0 40px 10px #ffd70066, 0 8px 40px rgba(0,0,0,0.5);
+  border-radius: 24px;
+  overflow: hidden;
+  width: 320px; /* 카드 너비 지정 */
+  height: 400px; /* 카드 높이 지정 */
+  
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 60px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.14) 0%, transparent 100%);
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  pointer-events: none;
+  z-index: 1;
+}
+.sparkle {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  background: radial-gradient(circle, #fff70088 30%, transparent 70%);
+  animation: sparkleMove 1.5s infinite alternate;
+  filter: blur(5px);
+}
+@keyframes sparkleMove {
+  0% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1.2);}
+}
+
+/*sub_button*/
+.hidden_sub_button {
+  display: none;
+  justify-content: center;
+  margin-bottom: 12px; /* 카드 하단과의 여백 */
+}
+
+.gold-cta-btn {
+  background: linear-gradient(90deg, #ffe066 0%, #ffd700 60%, #ffc300 100%);
+  color: #23232a;
+  font-weight: 700;
+  font-size: 1.08rem;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 999px;
+  box-shadow: 0 4px 24px #ffd70044, 0 1.5px 8px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: 
+    background 0.2s,
+    box-shadow 0.2s,
+    transform 0.12s;
+  letter-spacing: 0.02em;
+  outline: none;
+  position: relative;
+  z-index: 2;
+}
+
+.gold-cta-btn:hover, .gold-cta-btn:focus {
+  background: linear-gradient(90deg, #fffbe6 0%, #ffe066 60%, #ffd700 100%);
+  box-shadow: 0 8px 32px #ffd70066, 0 2px 12px rgba(0,0,0,0.18);
+  transform: translateY(-2px) scale(1.04);
+}
+
+.gold-cta-btn:active {
+  background: linear-gradient(90deg, #ffd700 0%, #ffc300 100%);
+  box-shadow: 0 2px 8px #ffd70033, 0 1px 4px rgba(0,0,0,0.10);
+  transform: scale(0.98);
+}
+
+/*당첨내역*/
+.not_sub_hide{
+    text-shadow: 0px 0px 10px white;
+    color: transparent;
+}
+.hidden_sub_title{
+    margin-bottom: 12px;
+    display: none;
+}
+.hidden_sub_title p{
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+/*background*/
+.slot-bg-wrap {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.slot-bg {
+  position: absolute;
+  left: -100vw;
+  width: 300vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 80px;
+  animation: slotmove 16s linear infinite;
+}
+
+.slot-item {
+  font-size: 2.5rem;
+  margin: 0 36px;
+  color: #ffd700;
+  opacity: 0.8;
+  /* 이미지 사용시 <img class="slot-item" src="..." />로 대체 가능 */
+}
+
+@keyframes slotmove {
+  0% { left: -100vw; }
+  100% { left: 0vw; }
+}
